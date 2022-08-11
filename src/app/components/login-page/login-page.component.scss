@@ -1,0 +1,63 @@
+@media(max-width: 1270px) {
+    section {
+        display: none;
+    }
+}
+
+form {
+    margin: 50px;
+    margin-top: 50px;
+    text-align: center;
+    background-color: white;
+    float: left;
+    padding: 20px;
+    height: 400px;
+    border-radius: 50px;
+    
+    h1{
+        margin-bottom: 50px;
+    }
+
+    input {
+        width: 200px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 100px;
+        border-width: 4px;
+        padding: 5px;
+    }
+
+    button {
+        color: white;
+        width: 300px;
+        padding: 5px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 100px;
+        border-width: 5px;
+        background-color: black;
+        margin-top: 20px;
+
+        &:hover {
+            background-color: white;
+            color: black;
+        }
+    }
+
+    .erros {
+        display: none;
+    }
+}
+
+
+
+
+
+section {
+    float: right;
+    width: 500px;
+    height: 595px;
+    background-color: red;
+}
