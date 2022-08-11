@@ -17,9 +17,12 @@ export class LoginPageComponent implements OnInit {
     const senha = "123"
     let usuarioDigitado = (<HTMLInputElement>document.getElementById("usuario"))
     let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
+    let erros = (<HTMLInputElement>document.getElementById("erros"))
     console.log(`Usuario digitado:${usuarioDigitado.value}\nSenha digitada:${senhaDigitada.value}`)
     if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
       console.log("\nAcesso permitido!")
+      erros.innerHTML = "<p>Em breve acesso estará disponível</p>"
+
     }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
       let erros = (<HTMLInputElement>document.getElementById("erros"))
       erros.style.display = "block"
@@ -30,7 +33,6 @@ export class LoginPageComponent implements OnInit {
       window.alert("Todos os campos são obrigatórios.")
     }else{
       console.log("\nAcesso NEGADO!")
-      let erros = (<HTMLInputElement>document.getElementById("erros"))
       erros.style.display = "block"
       erros.style.marginTop = "10px"
       erros.innerHTML = `
