@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,23 +19,21 @@ export class LoginPageComponent implements OnInit {
     let usuarioDigitado = (<HTMLInputElement>document.getElementById("usuario"))
     let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
     let erros = (<HTMLInputElement>document.getElementById("erros"))
+    let btnLogin = (<HTMLInputElement>document.getElementById("btnLogin"))
+
     console.log(`Usuario digitado:${usuarioDigitado.value}\nSenha digitada:${senhaDigitada.value}`)
     if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
       console.log("\nAcesso permitido!")
-      erros.innerHTML = "<p>Em breve acesso estará disponível</p>"
-
+      this.router.navigate(['/home'])
     }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
-      let erros = (<HTMLInputElement>document.getElementById("erros"))
-      erros.style.display = "block"
-      erros.style.marginTop = "10px"
+      erros.className = "errosAtivo"
       erros.innerHTML = `
         <p>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</p>
       `
       window.alert("Todos os campos são obrigatórios.")
     }else{
       console.log("\nAcesso NEGADO!")
-      erros.style.display = "block"
-      erros.style.marginTop = "10px"
+      erros.className = "errosAtivo"
       erros.innerHTML = `
         <p>Usuario ou senha inválidos. Tente novamente!</p>
         <p>Não possui uma conta?<a href="">Clique aqui para cadastrar-se</a></p>
@@ -42,11 +41,11 @@ export class LoginPageComponent implements OnInit {
         <details>
           <summary>Clique aqui para ver detalhes do erro</summary>
           <p>
-            Os dados a seguir não estão cadastrados no sistema:
+            Os dados a seguir <strong>não estão cadastrados no sistema:</strong>
             <br>
-            Usuario: ${usuarioDigitado.value} 
+            Usuario digitado: ${usuarioDigitado.value} 
             <br>
-            Senha: ${senhaDigitada.value}
+            Senha digitada: ${senhaDigitada.value}
           </p>
         </details>
         
