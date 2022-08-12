@@ -2,13 +2,13 @@
     <h1>Preencha os campos abaixo para fazer login:</h1>
     <label for="usuario">Usuario:</label>
     <br>
-    <input type="text" name="usuario" id="usuario" placeholder="Digite seu nome de usuario aqui">
+    <input type="text" name="usuario" id="usuario" (keydown)="validaLogin($event)" placeholder="Digite seu nome de usuario aqui">
     <br>
     <label for="usuario">Senha:</label>
     <br>
-    <input type="password" name="senha" id="senha" placeholder="Digite sua senha aqui">
+    <input type="password" name="senha" id="senha" (keydown)="validaLogin($event)" placeholder="Digite sua senha aqui">
     <br>
-    <button id="btnLogin" type="button" (click)="validaLogin()">Entrar</button>
+    <button id="btnLogin" type="button" (click)="validaLogin($event)">Entrar</button>
     
     <div class="erros" id="erros">
 
