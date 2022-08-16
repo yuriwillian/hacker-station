@@ -31,7 +31,6 @@ export class LoginPageComponent implements OnInit {
         erros.innerHTML = `
           <p>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</p>
         `
-        window.alert("Todos os campos são obrigatórios.")
       }else{
         console.log("\nAcesso NEGADO!")
         erros.className = "errosAtivo"
