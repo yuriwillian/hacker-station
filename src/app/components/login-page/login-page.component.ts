@@ -14,17 +14,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   validaLogin(event: any): void {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === undefined) {
       const usuario = "admin"
       const senha = "123"
       let usuarioDigitado = (<HTMLInputElement>document.getElementById("usuario"))
       let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
       let erros = (<HTMLInputElement>document.getElementById("erros"))
       let btnLogin = (<HTMLInputElement>document.getElementById("btnLogin"))
-
-      console.log(`Usuario digitado:${usuarioDigitado.value}\nSenha digitada:${senhaDigitada.value}`)
       if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
-        console.log("\nAcesso permitido!")
         this.router.navigate(['/home'])
       }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
         erros.className = "errosAtivo"
@@ -32,7 +29,6 @@ export class LoginPageComponent implements OnInit {
           <p>TODOS OS CAMPOS SÃO OBRIGATÓRIOS</p>
         `
       }else{
-        console.log("\nAcesso NEGADO!")
         erros.className = "errosAtivo"
         erros.innerHTML = `
           <p>Usuario ou senha inválidos. Tente novamente!</p>
