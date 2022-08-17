@@ -1,0 +1,9 @@
+<app-menu></app-menu>
+<div class="dispositivos">
+    <h1>Dispositivos Contaminados:</h1>
+    <div class="dispositivos__dispositivo" *ngFor="let dispositivo of dispositivos; let i = index; i + 1">
+        <h3>{{dispositivo.modelo}}</h3>
+        <p><strong>Username:</strong> {{dispositivo.username}}</p>
+        <p><strong>Acessos:</strong> {{dispositivo.acessos}}</p>
+    </div>
+</div>
