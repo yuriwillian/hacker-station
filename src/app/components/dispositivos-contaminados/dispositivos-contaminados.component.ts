@@ -28,6 +28,6 @@ export class DispositivosContaminadosComponent implements OnInit {
   ]
 
   verDispositivo(): void {
-    // resolver
+    // construir componente
   }
 }
