@@ -26,4 +26,8 @@ export class DispositivosContaminadosComponent implements OnInit {
       acessos: ["Câmera", "Microfone", "Arquivos"]
     }
   ]
+
+  verDispositivo(): void {
+    window.location.href("") // resolver
+  }
 }
