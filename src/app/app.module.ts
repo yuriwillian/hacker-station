@@ -8,6 +8,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { DispositivosContaminadosComponent } from './components/dispositivos-contaminados/dispositivos-contaminados.component';
+import { BankCrashComponent } from './components/bank-crash/bank-crash.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DispositivosContaminadosComponent } from './components/dispositivos-con
     MenuComponent,
     LoginPageComponent,
     ToolsComponent,
-    DispositivosContaminadosComponent
+    DispositivosContaminadosComponent,
+    BankCrashComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,8 @@ export class ToolsComponent implements OnInit {
     this.router.navigate(['/dispositivos-contaminados'])
   }
 
+  bankCrash(): void {
+    this.router.navigate(['/bank-crash'])
+  }
+
 }

@@ -13,6 +13,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  saldo = 10.00
+
   abrirTools(): void{
     console.log("Tools aberto!")
     this.router.navigate(['/tools'])
@@ -20,14 +22,11 @@ export class MenuComponent implements OnInit {
 
   abrirAslan(): void{
     console.log("Aslan aberto!")
-
   }
 
   abrirHome(): void{
     console.log("Home  aberto!")
     this.router.navigate(['/home'])
-
   }
-
 
 }

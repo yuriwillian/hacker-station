@@ -1,9 +1,11 @@
 <header>
     <nav  class="menu">
+        <p id="saldo" ng-init="calcularSaldo()">Saldo = R${{saldo}}</p>
         <ul class="menu__list">
             <li class="menu__item"><button (click)="abrirHome()">Home</button></li>
             <li class="menu__item"><button (click)="abrirTools()">Tools</button></li>
             <li class="menu__item"><button (click)="abrirAslan()">A.S.L.A.N</button></li>
         </ul>
+
     </nav>
 </header>

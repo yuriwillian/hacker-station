@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hacker-station';
+  
+  calcularSaldo(): void {
+    console.log("Saldo atualizado")
+  }
 }
+
