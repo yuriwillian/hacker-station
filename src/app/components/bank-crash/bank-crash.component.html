@@ -1,7 +1,10 @@
 <app-menu></app-menu>
 <div class="bankCrash">
     <h1>Bem vindo ao Bank Crash :)</h1>
-    <div class="bankCrash__opcao">
+    <div class="bankCrash__opcao" (click)="hackGeral()">
         <h3>Hack Geral (+R$1.000,00)</h3>
+    </div>
+    <div class="bankCrash__opcao" (click)="hackIndividual()">
+        <h3>Hack Individual (de +R$500,00 a +R$1.000,00)</h3>
     </div>
 </div>

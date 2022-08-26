@@ -9,6 +9,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { ToolsComponent } from './components/tools/tools.component';
 import { DispositivosContaminadosComponent } from './components/dispositivos-contaminados/dispositivos-contaminados.component';
 import { BankCrashComponent } from './components/bank-crash/bank-crash.component';
+import { HackIndividualComponent } from './components/hack-individual/hack-individual.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BankCrashComponent } from './components/bank-crash/bank-crash.component
     LoginPageComponent,
     ToolsComponent,
     DispositivosContaminadosComponent,
-    BankCrashComponent
+    BankCrashComponent,
+    HackIndividualComponent
   ],
   imports: [
     BrowserModule,
