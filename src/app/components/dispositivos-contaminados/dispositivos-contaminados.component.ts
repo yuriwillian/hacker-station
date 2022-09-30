@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-dispositivos-contaminados',
@@ -8,24 +9,22 @@ import { Router } from '@angular/router';
 })
 export class DispositivosContaminadosComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
+  tools: any = []
+  toolsService: ToolsService
+  
+  constructor() { 
+    this.toolsService = new ToolsService()
   }
 
-  dispositivos: any[] = [
-    {
-      modelo: "samsungJ8",
-      username: "Thais",
-      acessos: ["Câmera", "Microfone", "Arquivos", "Tela", "Root"]
-
-    },
-    {
-      modelo: "iphone12",
-      username: "Gustavo",
-      acessos: ["Câmera", "Microfone", "Arquivos"]
-    }
-  ]
+  ngOnInit(): void {
+    this.tools = this.toolsService.getDispositivos()
+    console.log(`
+     Segue informações de disp. infec. :\n
+     ${this.tools[0].modelo}\n
+     ${this.tools[0].username}\n
+     ${this.tools[0].acessos}\n
+    `)
+  }
 
   verDispositivo(): void {
     // construir componente

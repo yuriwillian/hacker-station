@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-bank-crash',
@@ -7,18 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./bank-crash.component.scss']
 })
 export class BankCrashComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  tools: any = []
+  toolsService: ToolsService
+  
+  constructor() { 
+    this.toolsService = new ToolsService()
+  }
 
   ngOnInit(): void {
+    this.tools = this.toolsService.getHacks()
   }
-
-  hackIndividual(): void {
-    this.router.navigate(['/hack-individual'])
-  }
-
   hackGeral(): void {
-    console.log("É necessário criar um 'service'... estudar sobre...")
+    console.log("É necessário criar um service... estudar sobre...") //adicionar saldo ao clicar...
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-tools',
