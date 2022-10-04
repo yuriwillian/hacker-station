@@ -9,8 +9,16 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   constructor(private router: Router) { }
-
   ngOnInit(): void {
+    if(localStorage.getItem("usuarios") == null){
+      console.log("Nenhum usuario salvo no banco de dados")
+    } else {
+      console.log(`
+      Por algum motivo mesmo tendo o usuario salvo no local storange e podendo colocar 
+      ele aqui: --> ${localStorage.getItem("usuarios")} <--\nele simplesmente não entra no input...
+      `)
+    }
+    
   }
 
   validaLogin(event: any): void {
@@ -20,8 +28,9 @@ export class LoginPageComponent implements OnInit {
       let usuarioDigitado = (<HTMLInputElement>document.getElementById("usuario"))
       let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
       let erros = (<HTMLInputElement>document.getElementById("erros"))
-      let btnLogin = (<HTMLInputElement>document.getElementById("btnLogin"))
       if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
+        localStorage.setItem("usuarios", usuarioDigitado.value)
+        console.log(`Deu certo! Usuário salvo:\n${localStorage.getItem("usuarios")}`)
         this.router.navigate(['/home'])
       }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
         erros.className = "errosAtivo"
