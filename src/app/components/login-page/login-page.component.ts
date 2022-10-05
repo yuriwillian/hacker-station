@@ -42,14 +42,18 @@ export class LoginPageComponent implements OnInit {
     if (event.key === "Enter" || event.key === undefined) {
       const usuario = "admin"
       const senha = "123"
-      let usuarioDigitado = (<HTMLInputElement>document.getElementById("usuario"))
-      let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
+      let usuarioDigitado: any = (<HTMLInputElement>document.getElementById("usuario"))
+      let senhaDigitada: any = (<HTMLInputElement>document.getElementById("senha"))
       let erros = (<HTMLInputElement>document.getElementById("erros"))
       if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
-        let salvarLogin = window.confirm("Deseja salvar seu usuario e senha?")
-        if(salvarLogin == true){
-          localStorage.setItem("usuarios", usuarioDigitado.value)
-          localStorage.setItem("senhas", senhaDigitada.value)
+        let userSalvo = localStorage.getItem("usuarios")
+        let senhaSalva = localStorage.getItem("senhas") 
+        if(userSalvo != usuarioDigitado.value || senhaSalva != senhaDigitada.value){
+          let salvarLogin = window.confirm("Deseja salvar seu usuario e senha?")
+          if(salvarLogin == true){
+            localStorage.setItem("usuarios", usuarioDigitado.value)
+            localStorage.setItem("senhas", senhaDigitada.value)
+          }
         }
         this.router.navigate(['/home'])
       }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
