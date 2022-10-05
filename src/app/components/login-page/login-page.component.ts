@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,15 +9,31 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  login: any = []
+  loginService: LoginService
+
+  constructor(private router: Router) {
+    this.loginService = new LoginService()
+   }
   ngOnInit(): void {
-    if(localStorage.getItem("usuarios") == null){
-      console.log("Nenhum usuario salvo no banco de dados")
-    } else {
-      console.log(`
-      Por algum motivo mesmo tendo o usuario salvo no local storange e podendo colocar 
-      ele aqui: --> ${localStorage.getItem("usuarios")} <--\nele simplesmente não entra no input...
-      `)
+    this.login = this.loginService.getUsers()
+    console.log(`
+      Usuários e senhas contidos em "getUsers()":\n
+      User: ${this.login[0].usuario}\n
+      Password: ${this.login[0].senha}
+      ------------------------
+      User: ${this.login[1].usuario}\n
+      Password: ${this.login[1].senha}\n
+      
+    `) //ver o que fazer com esse service para o auto-preenchimento...
+
+    let inputUser: any = (<HTMLInputElement>document.getElementById("usuario"))
+    let inputPass: any = (<HTMLInputElement>document.getElementById("senha"))
+    let userSalvo = localStorage.getItem("usuarios")
+    let senhaSalva = localStorage.getItem("senhas")
+    if(userSalvo || senhaSalva != null){
+      inputUser.setAttribute("value", userSalvo)
+      inputPass.setAttribute("value", senhaSalva)
     }
     
   }
@@ -29,8 +46,11 @@ export class LoginPageComponent implements OnInit {
       let senhaDigitada = (<HTMLInputElement>document.getElementById("senha"))
       let erros = (<HTMLInputElement>document.getElementById("erros"))
       if(usuarioDigitado.value == usuario && senhaDigitada.value == senha){
-        localStorage.setItem("usuarios", usuarioDigitado.value)
-        console.log(`Deu certo! Usuário salvo:\n${localStorage.getItem("usuarios")}`)
+        let salvarLogin = window.confirm("Deseja salvar seu usuario e senha?")
+        if(salvarLogin == true){
+          localStorage.setItem("usuarios", usuarioDigitado.value)
+          localStorage.setItem("senhas", senhaDigitada.value)
+        }
         this.router.navigate(['/home'])
       }else if(usuarioDigitado.value == "" || senhaDigitada.value == ""){
         erros.className = "errosAtivo"
